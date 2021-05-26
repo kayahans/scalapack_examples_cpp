@@ -71,7 +71,8 @@ int main(int argc, char **argv) {
 
     double *input_mat;
     input_mat = new double[n*n];
-    
+
+    // currently the matrix is read by all the MPI processes, this is inefficient
     read_square_matrix(input_mat, n);
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &myrank_mpi);
