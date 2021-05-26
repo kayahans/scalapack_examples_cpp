@@ -33,7 +33,7 @@ void read_square_matrix(double *A, int n) {
     // M = (M+M')/2; -> make it symmetric
     // eig(M) -> print eig for comparison
     // writematrix(M, 'M.txt') -> writes to M.txt
-    
+    // MATLAB writes row major
     std::fstream newfile;
     newfile.open("M.txt", std::ios::in);
     int a_ind = 0;
@@ -135,6 +135,7 @@ int main(int argc, char **argv) {
     // Pdelset routine is easier and general for any block cyclic distribution
     for (int i=1;i<=n;i++) {
         for (int j=1;j<=n;j++) {
+            // Read row major matrix
             pdelset_(A, &i, &j, descA, &(input_mat[(j-1)+(i-1)*n]));
         }
     }
